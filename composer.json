@@ -1,0 +1,17 @@
+{
+    "name": "engel/woocommerce-discord",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Frederick",
+            "email": "engel199702@hotmail.com"
+        }
+    ],
+    "require": {
+        "restcord/restcord": "^0.3.2"
+    },
+    "autoload": {
+        "psr-4": {"WooCommerceDiscord\\": "./"}
+    }
+}

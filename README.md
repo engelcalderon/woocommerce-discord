@@ -1,0 +1,1 @@
+# Connect discord accounts on checkout page on selected products from woocoomerce and give them access to Discord role
