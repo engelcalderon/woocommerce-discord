@@ -5,7 +5,7 @@
  * Description: Connect discord accounts on checkout page on selected products from woocoomerce and give them access to Discord role
  * Author: Frederick Calderon
  * Author URI: https://github.com/engelcalderon
- * Version: 1.0.0
+ * Version: 1.0.1
  *
  * @package		WooCommerce Discord
  * @author		Frederick.
