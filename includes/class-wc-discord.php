@@ -15,8 +15,9 @@ class WC_Discord {
     public static function on_subscription_status_changed($subscription) {
 
         $is_cancelled = $subscription->has_status('cancelled');
+        $is_expired = $subscription->has_status('expired');
 
-        if ($is_cancelled) {
+        if ($is_cancelled || $is_expired) {
             $user_id = $subscription->get_user_id();
             $discord_credentials = get_user_meta($user_id, '_discord_credentials', true);
             $member_id = $discord_credentials['member_id'];
