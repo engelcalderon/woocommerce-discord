@@ -21,11 +21,11 @@ class WC_Discord {
             $user_id = $subscription->get_user_id();
             $discord_credentials = get_user_meta($user_id, '_discord_credentials', true);
             $member_id = $discord_credentials['member_id'];
-            self::quick_discord_member($member_id);
+            self::kick_discord_member($member_id);
         }
     }
 
-    public static function quick_discord_member($memberId) {
+    public static function kick_discord_member($memberId) {
         global $discord;
 
         // these values are saved in settings
