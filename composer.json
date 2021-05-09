@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "restcord/restcord": "^0.3.2"
+        "restcord/restcord": "^0.5.0"
     },
     "autoload": {
         "psr-4": {"WooCommerceDiscord\\": "./"}

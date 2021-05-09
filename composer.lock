@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1468fac25631013c327ae8f78282d415",
+    "content-hash": "4cb6ecbf9911acf3b8def054b7746aa3",
     "packages": [
         {
             "name": "guzzlehttp/command",
@@ -580,30 +580,30 @@
         },
         {
             "name": "restcord/restcord",
-            "version": "0.3.2",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/restcord/restcord.git",
-                "reference": "2e332138428a91fbcc70630c324aa5a449c11b01"
+                "reference": "e79722fc74b15773a8b58237f678d004038f3529"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/restcord/restcord/zipball/2e332138428a91fbcc70630c324aa5a449c11b01",
-                "reference": "2e332138428a91fbcc70630c324aa5a449c11b01",
+                "url": "https://api.github.com/repos/restcord/restcord/zipball/e79722fc74b15773a8b58237f678d004038f3529",
+                "reference": "e79722fc74b15773a8b58237f678d004038f3529",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.3",
                 "guzzlehttp/guzzle-services": "^1.0",
-                "monolog/monolog": "^1.22",
+                "monolog/monolog": "^1.22|^2.0",
                 "netresearch/jsonmapper": "^1.4",
-                "php": "^5.6|^7.0",
-                "symfony/options-resolver": "^2.6|^3.0|^4.0"
+                "php": "^7.3|^8.0",
+                "symfony/options-resolver": "^3.4|^4.4|^5.1"
             },
             "require-dev": {
                 "beberlei/assert": "^2.7",
-                "gossi/php-code-generator": "^0.4.1",
-                "phpunit/phpunit": "^6.0|^5.0",
+                "gossi/php-code-generator": "^0.5.0",
+                "phpunit/phpunit": "^8.0|^9.0",
                 "symfony/console": "^2.6|^3.0|^4.0",
                 "symfony/process": "^2.6|^3.0|^4.0",
                 "symfony/var-dumper": "^2.6|^3.0|^4.0",
@@ -626,7 +626,11 @@
                 }
             ],
             "description": "REST Library for the Discord API",
-            "time": "2019-08-08T23:33:12+00:00"
+            "support": {
+                "issues": "https://github.com/restcord/restcord/issues",
+                "source": "https://github.com/restcord/restcord/tree/0.5.0"
+            },
+            "time": "2020-12-24T04:37:14+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -923,5 +927,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
