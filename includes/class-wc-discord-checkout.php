@@ -13,7 +13,8 @@ class WC_Discord_Checkout {
         add_action('woocommerce_checkout_process', array(__CLASS__, 'validate_fields_before_checkout'));
 
         // grant access to discord after subscription is created on chekout
-        add_action('woocommerce_checkout_subscription_created', array(__CLASS__, 'process_checkout'));
+        add_action('woocommerce_subscription_status_active', array(__CLASS__, 'process_checkout'));
+        // add_action('woocommerce_checkout_subscription_created', array(__CLASS__, 'process_checkout'));
     }
 
     public static function checkout_discord_fields() {
@@ -109,7 +110,6 @@ class WC_Discord_Checkout {
             $_SESSION['discord_curret_user'] = $currentUser;
             $_SESSION['discord_user_token'] = $token;
 
-
             echo '<a id="_link_discord_button" href="'.$authUri.'"class="button">'.$currentUser->username.'</a>';
         } else {
             // echo '<a id="_link_discord_button" href="'.$authUri.'"class="button">'.__('Link account', 'woocommerce-discord').'</a>';
@@ -130,16 +130,17 @@ class WC_Discord_Checkout {
         }
     }
 
-    public static function process_checkout($order) {
+    public static function process_checkout($subscription) {
         if (!self::should_connect_discord_account()) return;
-
-        $user_id =$order->get_user_id();
+        
+        $user_id =$subscription->get_user_id();
         $currentUser = $_SESSION['discord_curret_user'];
         $token = $_SESSION['discord_user_token'];
+        
+        if (!$user_id || !$currentUser || !$token) return;
+        
+        self::add_member_to_guild($currentUser, $token);
 
-        // TODO: add member to discord
-        self::add_member_to_guild();
-        // TODO: save member id on user meta
         $discord_meta_args = array(
             'member_id' => $currentUser->id,
             'access_token' => $token->access_token,
@@ -152,11 +153,8 @@ class WC_Discord_Checkout {
         $_SESSION['discord_user_token'] = NULL;
     }
 
-    private static function add_member_to_guild() {
+    private static function add_member_to_guild($currentUser, $token) {
         global $discord;
-
-        $currentUser = $_SESSION['discord_curret_user'];
-        $token = $_SESSION['discord_user_token'];
 
         // these values are saved in settings
         $guild_id = get_option('guild_id');
@@ -198,22 +196,6 @@ class WC_Discord_Checkout {
             return true;
         }
         return false;
-        // if (sizeof(WC()->cart->get_cart()) > 0) {
-
-        //     foreach(WC()->cart->get_cart() as $cart_item_key => $values) {
-
-        //         // $product = $values['data'];
-        //         // $product_id = $product->get_type() == 'subscription_variation' 
-        //         // ? $product->get_parent_id() : $product->get_id();
-        //         // $use_discord = get_post_meta($product_id, '_use_discord', true);
-        //         // if (isset($use_discord) && $use_discord == "yes") {
-        //         //     return true;
-        //         //     break;
-        //         // }
-        //         return true;
-        //     }
-        // }
-        // return false;
     }
 
 }
